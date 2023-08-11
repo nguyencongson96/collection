@@ -15,10 +15,24 @@
   }
 }
 
-.circle {
+.circle_1,
+.circle_2 {
   position: fixed;
   aspect-ratio: 1/1;
   border-radius: 50%;
+}
+
+.circle_1 {
+  top: 2%;
+  right: 25%;
+  width: 300px;
+}
+
+.circle_2 {
+  bottom: 2%;
+  right: 4%;
+  width: 220px;
+  transform: rotate(28.5deg);
 }
 
 .header {
@@ -109,4 +123,15 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.btn_submit {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: none;
+  height: fit-content !important;
+  margin-top: 0.7rem;
 }

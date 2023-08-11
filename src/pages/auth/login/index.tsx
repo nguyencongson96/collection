@@ -15,17 +15,16 @@ const Login: NextPageWithLayout = () => {
   const onFinish = (values: any) => {
     setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false)
-      messageApi.success({content: JSON.stringify(values), duration:3})
+      setIsLoading(false);
+      messageApi.success({ content: JSON.stringify(values), duration: 3 });
     }, 1000);
-    
   };
   return (
     <>
       {contextHolder}
       <title>Log In</title>
-      <div className={generalStyle.circle} id={loginStyle.circle_1}></div>
-      <div className={generalStyle.circle} id={loginStyle.circle_2}></div>
+      <div className={generalStyle.circle_1} id={loginStyle.circle_1}></div>
+      <div className={generalStyle.circle_2} id={loginStyle.circle_2}></div>
 
       <div className={generalStyle.header}>
         <h1>Welcome Back .!</h1>
@@ -54,7 +53,13 @@ const Login: NextPageWithLayout = () => {
           <Checkbox className={loginStyle.checkbox}>Remember me</Checkbox>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" className={loginStyle.btn_submit} loading={isLoading}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={generalStyle.btn_submit}
+          loading={isLoading}
+          style={{ background: "linear-gradient(90.57deg, #628eff 9.91%, #8740cd 53.29%, #580475 91.56%)" }}
+        >
           Log in
         </Button>
 
