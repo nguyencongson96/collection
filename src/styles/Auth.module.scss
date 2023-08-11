@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+
+.container {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Merriweather", serif;
+  padding: 0 5%;
+  background-color: var(--black);
+
+  * {
+    font-family: "Merriweather", serif;
+    color: var(--white);
+  }
+}
+
+.circle {
+  position: fixed;
+  top: 4%;
+  right: 23.5%;
+  width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #530061 0%, #0d0a30 100%);
+}
+
+#circle_2 {
+  top: unset;
+  bottom: 2%;
+  right: 2%;
+  width: 220px;
+  transform: rotate(28.5deg);
+  background: linear-gradient(180deg, #300061 0%, #0a1030 100%);
+}
+
+.header {
+  width: 65%;
+  margin: auto 0;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    transition: all 200ms ease-in-out;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: left;
+    border: 2px solid var(--white);
+    border-radius: 3px;
+    width: fit-content;
+    padding: 1rem;
+  }
+}
+
+.form {
+  position: relative;
+  width: 25%;
+  min-width: 500px;
+  margin: 5% 0;
+  padding: 0 2.5%;
+  padding-top: 5%;
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  border: 2px solid rgba(77, 77, 77, 1);
+  box-shadow: -8px 4px 5px 0px rgba(0, 0, 0, 0.24);
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  desc {
+    font-size: 0.9rem;
+  }
+}
+
+.form_input {
+  margin: 1.2rem 0;
+  background-color: transparent;
+  font-size: 1rem;
+
+  input,
+  input::placeholder {
+    color: var(--white);
+    background-color: transparent;
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+}
+
+.checkbox {
+  margin-bottom: 2rem;
+
+  :checked ~ span {
+    background: linear-gradient(180deg, #7cc1f3 0%, #d27eef 100%);
+  }
+}
+
+.btn_submit {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: none;
+  height: fit-content !important;
+  background: linear-gradient(90.57deg, #628eff 9.91%, #8740cd 53.29%, #580475 91.56%);
+  margin-bottom: 0.8rem;
+}
+
+.forgot {
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+
+.or {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  * {
+    color: rgba(77, 77, 77, 1);
+  }
+
+  .line {
+    width: 42%;
+    height: 1px;
+    border-top: 1px solid rgba(77, 77, 77, 1);
+  }
+}
+
+.logo {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    margin: 0 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.to_sign_up {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
