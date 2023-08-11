@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "@/pages/_app";
@@ -10,14 +10,19 @@ import loginStyle from "@/styles/auth/Login.module.scss";
 import Image from "next/image";
 
 const Login: NextPageWithLayout = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
   const onFinish = (values: any) => {
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1000);
-    console.log(values);
+    setTimeout(() => {
+      setIsLoading(false)
+      messageApi.success({content: JSON.stringify(values), duration:3})
+    }, 1000);
+    
   };
   return (
     <>
+      {contextHolder}
       <title>Log In</title>
       <div className={generalStyle.circle} id={loginStyle.circle_1}></div>
       <div className={generalStyle.circle} id={loginStyle.circle_2}></div>
