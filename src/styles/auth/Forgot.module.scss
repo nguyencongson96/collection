@@ -1,0 +1,26 @@
+#circle_1 {
+  top: 4%;
+  right: 23.5%;
+  width: 300px;
+  background: linear-gradient(180deg, #61003a 0%, #2d0a30 100%);
+}
+
+#circle_2 {
+  bottom: 2%;
+  right: 2%;
+  width: 220px;
+  transform: rotate(28.5deg);
+  background: linear-gradient(180deg, #61004b 0%, #220a30 100%);
+}
+
+.btn_submit {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: none;
+  height: fit-content !important;
+  background: linear-gradient(90.57deg, #e948c5 9.91%, #cd407b 53.29%, #75042d 91.56%);
+  margin-bottom: 0.8rem;
+}

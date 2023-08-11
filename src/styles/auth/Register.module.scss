@@ -1,0 +1,44 @@
+#circle_1 {
+  top: 4%;
+  right: 23.5%;
+  width: 300px;
+  background: linear-gradient(180deg, #190061 0%, #0a1b30 100%);
+}
+
+#circle_2 {
+  bottom: 2%;
+  right: 2%;
+  width: 220px;
+  transform: rotate(28.5deg);
+  background: linear-gradient(180deg, #000f61 0%, #0a1730 100%);
+}
+
+.checkbox:checked ~ span {
+  background: linear-gradient(180deg, #7cc1f3 0%, #d27eef 100%);
+}
+
+.btn_submit {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: none;
+  height: fit-content !important;
+  background: linear-gradient(90.57deg, #2e4cee 9.91%, #221ebf 53.29%, #040f75 91.56%);
+  margin-top: 2rem;
+}
+
+.forgot {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  font-size: 0.8rem;
+}
+
+.to_sign_up {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
