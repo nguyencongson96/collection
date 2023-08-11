@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "@/components/header";
 import { useRouter } from "next/router";
 
