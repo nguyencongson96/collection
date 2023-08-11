@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "@/pages/_app";
@@ -9,18 +9,19 @@ import generalStyle from "@/styles/auth/Auth.module.scss";
 import registerStyle from "@/styles/auth/Register.module.scss";
 
 const Login: NextPageWithLayout = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
   const [pwd, setPwd] = useState("");
-  const [pwdconfirm, setPwdConfirm] = useState("");
   const [form] = Form.useForm();
-  const isPwdMatched = pwd !== pwdconfirm || pwdconfirm === "";
 
   const onFinish = async (values: any) => {
     try {
       setIsLoading(true);
-      setTimeout(() => setIsLoading(false), 1000);
-      const validate = await form.validateFields();
-      console.log("Success:", validate, values);
+      setTimeout(() => {
+        setIsLoading(false);
+        messageApi.success({ content: JSON.stringify(values), duration: 3 });
+      }, 1000);
+      await form.validateFields();
     } catch (errorInfo) {
       console.log("Failed:", errorInfo);
     }
@@ -28,6 +29,7 @@ const Login: NextPageWithLayout = () => {
 
   return (
     <>
+      {contextHolder}
       <title>Register</title>
       <div className={generalStyle.circle} id={registerStyle.circle_1}></div>
       <div className={generalStyle.circle} id={registerStyle.circle_2}></div>
@@ -68,14 +70,22 @@ const Login: NextPageWithLayout = () => {
             bordered
             size="large"
             iconRender={(visible) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />)}
-            onChange={(value: any) => setPwd(value)}
+            onChange={(e: any) => {
+              setPwd(e.target.value);
+            }}
           />
         </Form.Item>
 
         <Form.Item
           name="confirm_password"
           className={generalStyle.form_input}
-          rules={[{ required: isPwdMatched, type: "regexp", message: "Password not match" }]}
+          rules={[
+            {
+              validator: (rule, value, callback) => {
+                value !== pwd && callback("Password not matched");
+              },
+            },
+          ]}
         >
           <Input.Password
             allowClear
@@ -84,7 +94,6 @@ const Login: NextPageWithLayout = () => {
             size="large"
             maxLength={16}
             iconRender={(visible) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />)}
-            onChange={(value: any) => setPwdConfirm(value)}
           />
         </Form.Item>
 
