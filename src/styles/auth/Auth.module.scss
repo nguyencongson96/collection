@@ -1,37 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 
 .container {
   height: 100vh;
   position: relative;
   display: flex;
   justify-content: space-between;
-  font-family: "Merriweather", serif;
-  padding: 0 5%;
+  font-family: "Noto Sans", sans-serif;
+  padding: 0 7%;
   background-color: var(--black);
 
   * {
-    font-family: "Merriweather", serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--white);
   }
 }
 
 .circle {
   position: fixed;
-  top: 4%;
-  right: 23.5%;
-  width: 300px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background: linear-gradient(180deg, #530061 0%, #0d0a30 100%);
-}
-
-#circle_2 {
-  top: unset;
-  bottom: 2%;
-  right: 2%;
-  width: 220px;
-  transform: rotate(28.5deg);
-  background: linear-gradient(180deg, #300061 0%, #0a1030 100%);
 }
 
 .header {
@@ -71,7 +58,7 @@
     font-size: 2.2rem;
   }
 
-  desc {
+  span {
     font-size: 0.9rem;
   }
 }
@@ -88,32 +75,6 @@
     padding-top: 0.8rem !important;
     padding-bottom: 0.8rem !important;
   }
-}
-
-.checkbox {
-  margin-bottom: 2rem;
-
-  :checked ~ span {
-    background: linear-gradient(180deg, #7cc1f3 0%, #d27eef 100%);
-  }
-}
-
-.btn_submit {
-  display: block;
-  width: 100%;
-  font-size: 1rem;
-  padding: 14px 10px;
-  border-radius: 12px;
-  border: none;
-  height: fit-content !important;
-  background: linear-gradient(90.57deg, #628eff 9.91%, #8740cd 53.29%, #580475 91.56%);
-  margin-bottom: 0.8rem;
-}
-
-.forgot {
-  display: block;
-  width: fit-content;
-  margin: auto;
 }
 
 .or {
@@ -136,11 +97,10 @@
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  svg {
-    margin: 0 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
+  img {
+    margin: 0 0.4rem;
   }
 }
 

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined, FacebookFilled } from "@ant-design/icons";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "@/pages/_app";
 import AuthLayout from "@/layouts/auth";
 import Link from "next/link";
-import styles from "@/styles/Auth.module.scss";
+import generalStyle from "@/styles/auth/Auth.module.scss";
+import loginStyle from "@/styles/auth/Login.module.scss";
+import Image from "next/image";
 
 const Login: NextPageWithLayout = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,19 +18,23 @@ const Login: NextPageWithLayout = () => {
   };
   return (
     <>
-      <div className={styles.header}>
+      <title>Log In</title>
+      <div className={generalStyle.circle} id={loginStyle.circle_1}></div>
+      <div className={generalStyle.circle} id={loginStyle.circle_2}></div>
+
+      <div className={generalStyle.header}>
         <h1>Welcome Back .!</h1>
         <h2>Skip the lag ?</h2>
       </div>
-      <Form className={styles.form} onFinish={onFinish} initialValues={{ remember: false }}>
+      <Form className={generalStyle.form} onFinish={onFinish} initialValues={{ remember: false }}>
         <h1>Login</h1>
-        <desc>{`Glad you're back!`}</desc>
+        <span>Glad you’re back!</span>
 
-        <Form.Item name="username" className={styles.form_input}>
+        <Form.Item name="username" className={generalStyle.form_input}>
           <Input placeholder="Username" bordered size="large" maxLength={16} allowClear />
         </Form.Item>
 
-        <Form.Item name="password" className={styles.form_input}>
+        <Form.Item name="password" className={generalStyle.form_input}>
           <Input.Password
             allowClear
             placeholder="Password"
@@ -40,33 +46,33 @@ const Login: NextPageWithLayout = () => {
         </Form.Item>
 
         <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox className={styles.checkbox}>Remember me</Checkbox>
+          <Checkbox className={loginStyle.checkbox}>Remember me</Checkbox>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" className={styles.btn_submit} loading={isLoading}>
+        <Button type="primary" htmlType="submit" className={loginStyle.btn_submit} loading={isLoading}>
           Log in
         </Button>
 
         <Form.Item>
-          <Link href="/" className={styles.forgot}>
+          <Link href="forgot" className={loginStyle.forgot}>
             Forgot password ?
           </Link>
         </Form.Item>
 
-        <div className={styles.or}>
-          <div className={styles.line}></div>
+        <div className={generalStyle.or}>
+          <div className={generalStyle.line}></div>
           <div>Or</div>
-          <div className={styles.line}></div>
+          <div className={generalStyle.line}></div>
         </div>
 
-        <Form.Item className={styles.logo}>
-          <GoogleOutlined />
-          <FacebookFilled />
-        </Form.Item>
+        <div className={generalStyle.logo}>
+          <Image src={"/images/google-icon.svg"} alt="" width={40} height={40} />
+          <Image src={"/images/facebook-icon.svg"} alt="" width={50} height={50} />
+        </div>
 
-        <Form.Item className={styles.to_sign_up}>
-          {`Don't have an account? `}
-          <Link href="/">Sign up</Link>
+        <Form.Item className={generalStyle.to_sign_up}>
+          Don’t have an account?
+          <Link href="register"> Sign up</Link>
         </Form.Item>
       </Form>
     </>
