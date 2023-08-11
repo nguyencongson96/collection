@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
-import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import { Form, Input, Button, message } from "antd";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "@/pages/_app";
 import AuthLayout from "@/layouts/auth";
 import Link from "next/link";
 import generalStyle from "@/styles/auth/Auth.module.scss";
 import forgotStyle from "@/styles/auth/Forgot.module.scss";
-import Image from "next/image";
 
 const Forgot: NextPageWithLayout = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
   const onFinish = (values: any) => {
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1000);
+    setTimeout(() => {
+      setIsLoading(false);
+      messageApi.success({ content: JSON.stringify(values), duration: 3 });
+    }, 1000);
     console.log(values);
   };
   return (
     <>
+      {contextHolder}
       <title>Forgot</title>
-      <div className={generalStyle.circle} id={forgotStyle.circle_1}></div>
-      <div className={generalStyle.circle} id={forgotStyle.circle_2}></div>
+      <div className={generalStyle.circle_1} id={forgotStyle.circle_1}></div>
+      <div className={generalStyle.circle_2} id={forgotStyle.circle_2}></div>
 
       <div className={generalStyle.header}>
         <h1>No Worries.!!</h1>
@@ -35,10 +38,16 @@ const Forgot: NextPageWithLayout = () => {
           className={generalStyle.form_input}
           rules={[{ required: true, type: "email", message: "Invalid Email" }]}
         >
-          <Input placeholder="example@mail.com" bordered size="large" maxLength={16} allowClear />
+          <Input placeholder="example@mail.com" bordered size="large" allowClear />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" className={forgotStyle.btn_submit} loading={isLoading}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={generalStyle.btn_submit}
+          loading={isLoading}
+          style={{ background: "linear-gradient(90.57deg, #e948c5 9.91%, #cd407b 53.29%, #75042d 91.56%)" }}
+        >
           Reset Password
         </Button>
 

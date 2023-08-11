@@ -31,8 +31,8 @@ const Login: NextPageWithLayout = () => {
     <>
       {contextHolder}
       <title>Register</title>
-      <div className={generalStyle.circle} id={registerStyle.circle_1}></div>
-      <div className={generalStyle.circle} id={registerStyle.circle_2}></div>
+      <div className={generalStyle.circle_1} id={registerStyle.circle_1}></div>
+      <div className={generalStyle.circle_2} id={registerStyle.circle_2}></div>
 
       <div className={generalStyle.header}>
         <h1>Roll the Carpet .!</h1>
@@ -97,7 +97,13 @@ const Login: NextPageWithLayout = () => {
           />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" className={registerStyle.btn_submit} loading={isLoading}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={generalStyle.btn_submit}
+          loading={isLoading}
+          style={{ background: "linear-gradient(90.57deg, #2e4cee 9.91%, #221ebf 53.29%, #040f75 91.56%)" }}
+        >
           Sign Up
         </Button>
 
