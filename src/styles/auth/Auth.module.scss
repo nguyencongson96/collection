@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
+.container {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Noto Sans", sans-serif;
+  padding: 0 7%;
+  background-color: var(--black);
+
+  * {
+    font-family: "Noto Sans", sans-serif;
+    color: var(--white);
+  }
+}
+
+.circle_1,
+.circle_2 {
+  position: fixed;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.circle_1 {
+  top: 2%;
+  right: 25%;
+  width: 300px;
+}
+
+.circle_2 {
+  bottom: 2%;
+  right: 4%;
+  width: 220px;
+  transform: rotate(28.5deg);
+}
+
+.header {
+  width: 65%;
+  margin: auto 0;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    transition: all 200ms ease-in-out;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: left;
+    border: 2px solid var(--white);
+    border-radius: 3px;
+    width: fit-content;
+    padding: 1rem;
+  }
+}
+
+.form {
+  position: relative;
+  width: 25%;
+  min-width: 500px;
+  margin: 5% 0;
+  padding: 0 2.5%;
+  padding-top: 5%;
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  border: 2px solid rgba(77, 77, 77, 1);
+  box-shadow: -8px 4px 5px 0px rgba(0, 0, 0, 0.24);
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+.form_input {
+  margin: 1.2rem 0;
+  background-color: transparent;
+  font-size: 1rem;
+
+  input,
+  input::placeholder {
+    color: var(--white);
+    background-color: transparent;
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+}
+
+.or {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  * {
+    color: rgba(77, 77, 77, 1);
+  }
+
+  .line {
+    width: 42%;
+    height: 1px;
+    border-top: 1px solid rgba(77, 77, 77, 1);
+  }
+}
+
+.logo {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin: 0 0.4rem;
+  }
+}
+
+.to_sign_up {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn_submit {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: none;
+  height: fit-content !important;
+  margin-top: 0.7rem;
+}

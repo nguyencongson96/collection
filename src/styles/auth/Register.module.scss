@@ -1,0 +1,25 @@
+#circle_1 {
+  background: linear-gradient(180deg, #190061 0%, #0a1b30 100%);
+}
+
+#circle_2 {
+  background: linear-gradient(180deg, #000f61 0%, #0a1730 100%);
+}
+
+.checkbox:checked ~ span {
+  background: linear-gradient(180deg, #7cc1f3 0%, #d27eef 100%);
+}
+
+.forgot {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  font-size: 0.8rem;
+}
+
+.to_sign_up {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
