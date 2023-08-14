@@ -34,17 +34,33 @@ const Login: NextPageWithLayout = () => {
         <h1>Login</h1>
         <span>Glad you’re back!</span>
 
-        <Form.Item name="username" className={generalStyle.form_input}>
-          <Input placeholder="Username" bordered size="large" maxLength={16} allowClear />
+        <Form.Item
+          name="username"
+          className={generalStyle.form_input}
+          rules={[
+            { required: true, message: "Username required" },
+            { max: 16, message: "Username too long" },
+          ]}
+          validateTrigger= "onSubmit"
+        >
+          <Input placeholder="Username" bordered size="large" allowClear />
         </Form.Item>
 
-        <Form.Item name="password" className={generalStyle.form_input}>
+        <Form.Item
+          name="password"
+          className={generalStyle.form_input}
+          rules={[
+            { required: true, message: "Username required" },
+            { min: 8, message: "Password too short" },
+            { max: 16, message: "Password too long" },
+          ]}
+          validateTrigger= "onSubmit"
+        >
           <Input.Password
             allowClear
             placeholder="Password"
             bordered
             size="large"
-            maxLength={16}
             iconRender={(visible) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />)}
           />
         </Form.Item>
