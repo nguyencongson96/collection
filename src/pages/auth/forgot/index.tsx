@@ -37,8 +37,9 @@ const Forgot: NextPageWithLayout = () => {
           name="email"
           className={generalStyle.form_input}
           rules={[{ required: true, type: "email", message: "Invalid Email" }]}
+          validateTrigger= "onSubmit"
         >
-          <Input placeholder="example@mail.com" bordered size="large" allowClear />
+          <Input placeholder="example@gmail.com" bordered size="large" allowClear />
         </Form.Item>
 
         <Button

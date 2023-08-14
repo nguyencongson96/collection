@@ -47,6 +47,7 @@ const Login: NextPageWithLayout = () => {
           name="username"
           className={generalStyle.form_input}
           rules={[{ required: true, message: "Username required" }]}
+          validateTrigger= "onSubmit"
         >
           <Input placeholder="Username" bordered size="large" maxLength={16} allowClear />
         </Form.Item>
@@ -55,6 +56,7 @@ const Login: NextPageWithLayout = () => {
           name="email"
           className={generalStyle.form_input}
           rules={[{ required: true, type: "email", message: "Invalid Email" }]}
+          validateTrigger= "onSubmit"
         >
           <Input placeholder="Email" bordered size="large" allowClear />
         </Form.Item>
@@ -63,6 +65,7 @@ const Login: NextPageWithLayout = () => {
           name="password"
           className={generalStyle.form_input}
           rules={[{ required: true, type: "string", message: "Invalid Password" }]}
+          validateTrigger= "onSubmit"
         >
           <Input.Password
             allowClear
@@ -86,6 +89,7 @@ const Login: NextPageWithLayout = () => {
               },
             },
           ]}
+          validateTrigger= "onSubmit"
         >
           <Input.Password
             allowClear
