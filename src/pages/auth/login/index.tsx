@@ -8,14 +8,15 @@ import Link from "next/link";
 import generalStyle from "@/styles/auth/Auth.module.scss";
 import loginStyle from "@/styles/auth/Login.module.scss";
 import Image from "next/image";
-import axios from "axios";
+import Head from "next/head";
+import authAPI from "@/pages/api/auth";
 
 const Login: NextPageWithLayout = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
-  const backendURL: string = process.env.BACKEND_URL || "";
   const onFinish = async (values: any) => {
-    const result: { username: string; password: string } = await axios.get(backendURL, values);
+    const result = await authAPI.login(values);
+    console.log(result);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -26,27 +27,24 @@ const Login: NextPageWithLayout = () => {
   return (
     <>
       {contextHolder}
-      <title>Log In</title>
+      <Head>
+        <title>Log In</title>
+      </Head>
+
       <div className={generalStyle.circle_1} id={loginStyle.circle_1}></div>
       <div className={generalStyle.circle_2} id={loginStyle.circle_2}></div>
 
       <div className={generalStyle.header}>
         <h1>Welcome Back .!</h1>
-        <h2>Skip the lag ?</h2>
+        <h2>
+          <Link href="/">Skip the lag ?</Link>
+        </h2>
       </div>
       <Form className={generalStyle.form} onFinish={onFinish} initialValues={{ remember: false }}>
         <h1>Login</h1>
         <span>Glad you’re back!</span>
 
-        <Form.Item
-          name="username"
-          className={generalStyle.form_input}
-          rules={[
-            { required: true, message: "Username required" },
-            { min: 8, message: "Username too short" },
-          ]}
-          validateTrigger="onSubmit"
-        >
+        <Form.Item name="username" className={generalStyle.form_input} rules={[{ required: true, message: "Username required" }]}>
           <Input placeholder="Username" bordered size="large" allowClear />
         </Form.Item>
 
@@ -58,7 +56,6 @@ const Login: NextPageWithLayout = () => {
             { min: 8, message: "Password too short" },
             { max: 16, message: "Password too long" },
           ]}
-          validateTrigger="onSubmit"
         >
           <Input.Password
             allowClear
