@@ -8,17 +8,21 @@ import Link from "next/link";
 import generalStyle from "@/styles/auth/Auth.module.scss";
 import loginStyle from "@/styles/auth/Login.module.scss";
 import Image from "next/image";
+import axios from "axios";
 
 const Login: NextPageWithLayout = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
-  const onFinish = (values: any) => {
+  const backendURL: string = process.env.BACKEND_URL || "";
+  const onFinish = async (values: any) => {
+    const result: { username: string; password: string } = await axios.get(backendURL, values);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       messageApi.success({ content: JSON.stringify(values), duration: 3 });
     }, 1000);
   };
+
   return (
     <>
       {contextHolder}
@@ -39,9 +43,9 @@ const Login: NextPageWithLayout = () => {
           className={generalStyle.form_input}
           rules={[
             { required: true, message: "Username required" },
-            { max: 16, message: "Username too long" },
+            { min: 8, message: "Username too short" },
           ]}
-          validateTrigger= "onSubmit"
+          validateTrigger="onSubmit"
         >
           <Input placeholder="Username" bordered size="large" allowClear />
         </Form.Item>
@@ -54,7 +58,7 @@ const Login: NextPageWithLayout = () => {
             { min: 8, message: "Password too short" },
             { max: 16, message: "Password too long" },
           ]}
-          validateTrigger= "onSubmit"
+          validateTrigger="onSubmit"
         >
           <Input.Password
             allowClear

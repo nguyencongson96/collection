@@ -46,17 +46,23 @@ const Login: NextPageWithLayout = () => {
         <Form.Item
           name="username"
           className={generalStyle.form_input}
-          rules={[{ required: true, message: "Username required" }]}
-          validateTrigger= "onSubmit"
+          rules={[
+            { required: true, message: "Username required" },
+            { min: 8, message: "Username too short" },
+          ]}
+          validateTrigger="onSubmit"
         >
-          <Input placeholder="Username" bordered size="large" maxLength={16} allowClear />
+          <Input placeholder="Username" bordered size="large" allowClear />
         </Form.Item>
 
         <Form.Item
           name="email"
           className={generalStyle.form_input}
-          rules={[{ required: true, type: "email", message: "Invalid Email" }]}
-          validateTrigger= "onSubmit"
+          rules={[
+            { required: true, message: "Email required" },
+            { type: "email", message: "Invalid Email" },
+          ]}
+          validateTrigger="onSubmit"
         >
           <Input placeholder="Email" bordered size="large" allowClear />
         </Form.Item>
@@ -64,8 +70,12 @@ const Login: NextPageWithLayout = () => {
         <Form.Item
           name="password"
           className={generalStyle.form_input}
-          rules={[{ required: true, type: "string", message: "Invalid Password" }]}
-          validateTrigger= "onSubmit"
+          rules={[
+            { required: true, type: "string", message: "Password required" },
+            { min: 8, message: "Password too short" },
+            { max: 16, message: "Password too long" },
+          ]}
+          validateTrigger="onSubmit"
         >
           <Input.Password
             allowClear
@@ -84,19 +94,19 @@ const Login: NextPageWithLayout = () => {
           className={generalStyle.form_input}
           rules={[
             {
-              validator: (rule, value, callback) => {
-                value !== pwd && callback("Password not matched");
+              validator: (rule, value) => {
+                if (!value) return Promise.reject("Confirm Password required");
+                if (value !== pwd) return Promise.reject("Password not matched");
               },
             },
           ]}
-          validateTrigger= "onSubmit"
+          validateTrigger="onSubmit"
         >
           <Input.Password
             allowClear
             placeholder="Confirm Password"
             bordered
             size="large"
-            maxLength={16}
             iconRender={(visible) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />)}
           />
         </Form.Item>
