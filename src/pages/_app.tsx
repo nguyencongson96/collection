@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { useRouter } from "next/router";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import DefaultLayout from "@/layouts/default";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

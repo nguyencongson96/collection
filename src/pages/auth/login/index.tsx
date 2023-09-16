@@ -10,23 +10,24 @@ import loginStyle from "@/styles/auth/Login.module.scss";
 import Image from "next/image";
 import Head from "next/head";
 import authAPI from "@/pages/api/auth";
+import { useRouter } from "next/router";
 
 const Login: NextPageWithLayout = () => {
-  const [messageApi, contextHolder] = message.useMessage();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
+
   const onFinish = async (values: any) => {
-    const result = await authAPI.login(values);
-    console.log(result);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      messageApi.success({ content: JSON.stringify(values), duration: 3 });
-    }, 1000);
+    try {
+      setIsLoading(true)
+      await authAPI.login(values);
+      router.push("/")
+    } catch (error) {
+      message.error("Log in failed")
+    }
   };
 
   return (
     <>
-      {contextHolder}
       <Head>
         <title>Log In</title>
       </Head>
