@@ -8,13 +8,16 @@ const axiosClient = axios.create({
   },
   timeout: 20000,
 });
-axiosClient.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = token;
-  }
-  return config;
-});
+
+if ( typeof window !== 'undefined' ) {
+  axiosClient.interceptors.request.use(async (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = token;
+    }
+    return config;
+  });
+}
 
 axiosClient.interceptors.response.use(
   (response) => {
